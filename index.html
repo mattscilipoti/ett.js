@@ -18,16 +18,27 @@
   </header>
 
   <main class="main">
-    <div id="taskGroupMajorTasks">
+    <div class="taskTable" id="taskGroupMajorTasks">
       <table class="taskTable">
         <thead>
-          <row>
-            <th>{{purpose}}</th>
+          <tr>
+            <th class="taskInfo">{{purpose}}</th>
             <th class="hoursHeader" v-for="hour in hours">
               {{ hour.military }}
             </th>
-          </row>
+          </tr>
         </thead>
+        <tbody>
+          <tr v-for="task in tasks">
+            <td class="taskInfo">
+              {{ task.index }}
+              <input class="taskName" type="text" v-model="task.name" />
+            </td>
+            <td v-for="hour in hours" class="timeBubbles">
+              <input v-for="segment in hour.segments" class="timeBubble" type="radio">
+            </td>
+          </tr>
+        </tbody>
 
       </table>
     </div>

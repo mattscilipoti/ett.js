@@ -79,6 +79,46 @@ body {
   margin: 0;
 }
 
+div.taskTable {
+  overflow-x: scroll;
+  white-space: nowrap;
+  width: 900px;
+}
+table.taskTable {
+  margin-left:180px; 
+}
+.taskTable td.timeBubbles, th.hoursHeader {
+  min-width: 66px;
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+}
+
+table {
+  border-collapse:collapse;
+}
+
+td {
+  padding: 0 2px;
+  white-space:nowrap;
+}
+td.taskInfo, th.taskInfo {
+  background:whitesmoke; /* hide cells taht scroll under */
+  left:0px;
+  position:absolute;
+  top: auto;
+  width:180px;
+}
+
+input.taskName {
+  width: 140px;
+}
+
+input.timeBubble {
+  margin: 1px;
+  padding: 0;
+
+}
+
 .loader {
   left: 50%;
   top: 50%;

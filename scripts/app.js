@@ -15,16 +15,27 @@ app.hoursInADay = function () {
       return {
         value: n,
         military: ('00' + n).slice(-2), // padded left 0
-        // military: n.toLocaleString('en', { minimumIntegerDigits: 2, minimumFractionDigits: 0, useGrouping: false })
+        segments: [0, 0.25, 0.5, 0.75],
       }
     }
   )
 }
 
-var taskGroupMajorTasks = new Vue({
+app.taskGroupMajorTasks = new Vue({
   el: '#taskGroupMajorTasks',
   data: {
-    purpose: 'Three Major Tasks for Today',
-    hours: app.hoursInADay()
-  }
+    purpose: 'Major Tasks',
+    hours: app.hoursInADay(),
+    taskNames: ['test1', 'test2', 'test3'],
+  },
+  computed: {
+    tasks: function () {
+      return this.taskNames.map((taskName, n) => {
+        return {
+          index: ('00' + n).slice(-2),
+          name: taskName,
+        }
+      })
+    }
+  },
 })

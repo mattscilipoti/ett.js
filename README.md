@@ -13,6 +13,7 @@ This is heavily inspired by Dave Seah's [ETT](https://davidseah.com/2013/06/the-
 
 - deliver as single `index.html` file (possibly result of "compile" step)
 - offline-first
+- [vue.js](https://vuejs.org/)
 
 ---
 
@@ -24,5 +25,7 @@ This is heavily inspired by Dave Seah's [ETT](https://davidseah.com/2013/06/the-
 - example paper form, Revision 3a [ETT03-PROTO-0D6D2.pdf](http://davidseah.com/pub/downloads/pceo/ett/ETT03-PROTO-0D6D2.pdf)
 
 ### PWA
-
 - tutorial: https://developers.google.com/web/fundamentals/codelabs/your-first-pwapp/
+
+### vue.js
+- https://www.smashingmagazine.com/2018/02/jquery-vue-javascript/

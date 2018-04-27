@@ -18,14 +18,20 @@
   </header>
 
   <main class="main">
-    <div class="card cardTemplate" hidden>
-      . . .
+    <div id="taskGroupMajorTasks">
+      <table class="taskTable">
+        <thead>
+          <row>
+            <th>{{purpose}}</th>
+            <th class="hoursHeader" v-for="hour in hours">
+              {{ hour.military }}
+            </th>
+          </row>
+        </thead>
+
+      </table>
     </div>
   </main>
-
-  <div class="dialog-container">
-    . . .
-  </div>
 
   <div class="loader">
     <svg viewBox="0 0 32 32" width="32" height="32">
@@ -33,7 +39,8 @@
     </svg>
   </div>
 
-  <!-- Insert link to app.js here -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
+  <script src="scripts/app.js" async></script>
 </body>
 
 </html>

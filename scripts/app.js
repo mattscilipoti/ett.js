@@ -38,6 +38,11 @@ Vue.component('task-table', {
       })
     }
   },
+  methods: {
+    addTask: function () {
+      this.taskNames.push('new Task');
+    }
+  }
 })
 
 app.vm = new Vue({

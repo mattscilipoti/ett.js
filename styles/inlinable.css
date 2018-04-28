@@ -115,6 +115,7 @@ input.taskName {
 }
 
 input.timeBubble {
+  /* TODO: https://www.sitepoint.com/replacing-radio-buttons-without-replacing-radio-buttons/ */
   margin: 1px;
   padding: 0;
 }

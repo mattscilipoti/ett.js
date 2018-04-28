@@ -10,24 +10,26 @@
 </head>
 
 <body>
-  <header class="header">
-    <h1 class="header__title">Emergent Task Timer</h1>
-    <span class="date"></span>
-    <button id="butRefresh" class="headerButton"></button>
+  <div id="app">
+    <header class="header">
+      <h1 class="header__title">
+        Emergent Task Timer |
+        <!-- really? v-model does NOT support Date?, thx https://acdcjunior.github.io/how-bind-date-object-to-input-date-vue.js-v-model.html -->
+        <input type="date" :value="reportDate && reportDate.toISOString().split('T')[0]" @input="reportDate = $event.target.valueAsDate">
+      </h1>
+    </header>
 
-  </header>
+    <main class="main">
+      <task-table purpose="Major Tasks" id="taskGroupMajorTasks"></task-table>
+      <task-table purpose="'Just Happened'" id="taskGroupStuffHappened"></task-table>
 
-  <main class="main">
-    <task-table purpose="Major Tasks" id="taskGroupMajorTasks"></task-table>
-    <task-table purpose="'Just Happened'" id="taskGroupStuffHappened"></task-table>
-
-    <div v-show="isLoading" class="loader">
-      <svg viewBox="0 0 32 32" width="32" height="32">
-        <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
-      </svg>
-    </div>
-  </main>
-
+      <div v-show="isLoading" class="loader">
+        <svg viewBox="0 0 32 32" width="32" height="32">
+          <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+        </svg>
+      </div>
+    </main>
+  </div>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.js"></script>

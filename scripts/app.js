@@ -50,9 +50,10 @@ Vue.component('task-table', {
 })
 
 app.vm = new Vue({
-  el: 'main',
+  el: '#app',
   data: {
     isLoading: true,
+    reportDate: new Date(),
   },
   mounted() {
     this.$nextTick(() => {

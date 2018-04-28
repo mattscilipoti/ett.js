@@ -20,8 +20,8 @@
     </header>
 
     <main class="main">
-      <task-table purpose="Major Tasks" id="taskGroupMajorTasks"></task-table>
-      <task-table purpose="'Just Happened'" id="taskGroupStuffHappened"></task-table>
+      <task-table purpose="Major Tasks" v-bind:start-time="reportDate" id="taskGroupMajorTasks"></task-table>
+      <task-table purpose="'Just Happened'" v-bind:start-time="reportDate" id="taskGroupStuffHappened"></task-table>
 
       <div v-show="isLoading" class="loader">
         <svg viewBox="0 0 32 32" width="32" height="32">
@@ -31,7 +31,7 @@
     </main>
   </div>
 
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.js"></script>
   <script src="scripts/app.js" async></script>
   <script type="text/x-template" id="task-table-template">
@@ -42,7 +42,9 @@
           <tr>
             <th class="taskInfo">{{purpose}}</th>
             <th class="hoursHeader" v-for="hour in hours">
-              {{ hour.military }}
+              <span v-bind:title="hour.datetime">
+                {{ hour.military }}
+              </span>
             </th>
           </tr>
         </thead>

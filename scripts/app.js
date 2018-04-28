@@ -38,19 +38,18 @@ Vue.component('task-table', {
       })
     }
   },
-  updated: function () {
-    this.$nextTick(function () {
-      // Code that will run only after the
-      // entire view has been re-rendered
-      app.loading["main"] = false;
-    })
-  }
 })
 
-
-new Vue({
+app.vm = new Vue({
   el: 'main',
   data: {
     isLoading: true,
+  },
+  mounted() {
+    this.$nextTick(() => {
+      // Code that will run only after the
+      // entire view has been re-rendered
+      this.isLoading = false;
+    })
   }
 })

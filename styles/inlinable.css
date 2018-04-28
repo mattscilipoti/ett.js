@@ -88,7 +88,6 @@ div.taskTable {
   /* scroll timeBubbles, see: https://jsfiddle.net/ycYdL/ */
   overflow-x: scroll;
   white-space: nowrap;
-  width: 900px;
 }
 table.taskTable {
   margin-left: var(--taskInfoWidth);  /* keep in sync with .taskInfo width */

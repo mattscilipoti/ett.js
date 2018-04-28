@@ -80,6 +80,7 @@ body {
 }
 
 div.taskTable {
+  /* scroll timeBubbles, see: https://jsfiddle.net/ycYdL/ */
   overflow-x: scroll;
   white-space: nowrap;
   width: 900px;

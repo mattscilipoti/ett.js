@@ -1,9 +1,7 @@
 'use strict';
 
-var app = {
-  isLoading: { main: true },
-  spinner: document.querySelector('.loader'),
-};
+var app = {};
+
 
 app.rangeOfIntegers = function (upperBand, lowerBand = 0) {
   return Array.apply(null, Array(upperBand - lowerBand)).map(function (_, i) { return i - lowerBand; })
@@ -21,12 +19,14 @@ app.hoursInADay = function () {
   )
 }
 
-app.taskGroupMajorTasks = new Vue({
-  el: '#taskGroupMajorTasks',
-  data: {
-    purpose: 'Major Tasks',
-    hours: app.hoursInADay(),
-    taskNames: ['test1', 'test2', 'test3'],
+Vue.component('task-table', {
+  template: '#task-table-template',
+  props: ['purpose'],
+  data: function () {
+    return {
+      hours: app.hoursInADay(),
+      taskNames: ['test1', 'test2', 'test3'],
+    }
   },
   computed: {
     tasks: function () {
@@ -38,4 +38,19 @@ app.taskGroupMajorTasks = new Vue({
       })
     }
   },
+  updated: function () {
+    this.$nextTick(function () {
+      // Code that will run only after the
+      // entire view has been re-rendered
+      app.loading["main"] = false;
+    })
+  }
+})
+
+
+new Vue({
+  el: 'main',
+  data: {
+    isLoading: true,
+  }
 })

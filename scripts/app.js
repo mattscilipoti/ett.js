@@ -32,7 +32,8 @@ Vue.component('task-table', {
     tasks: function () {
       return this.taskNames.map((taskName, n) => {
         return {
-          index: ('00' + n).slice(-2),
+          index: n,
+          number: ('00' + n).slice(-2),
           name: taskName,
         }
       })
@@ -41,6 +42,9 @@ Vue.component('task-table', {
   methods: {
     addTask: function () {
       this.taskNames.push('new Task');
+    },
+    removeTask: function (index) {
+      this.taskNames.splice(index, 1);
     }
   }
 })

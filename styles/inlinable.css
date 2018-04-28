@@ -18,8 +18,13 @@
  * Styles which can be minified and inlined
  * see inline.css from: https://developers.google.com/web/fundamentals/codelabs/your-first-pwapp/
 */
+:root {
+  --taskInfoWidth: 190px;
+}
+
 * {
-  box-sizing: border-box; }
+  box-sizing: border-box; 
+}
 
 html, body {
   padding: 0;
@@ -86,7 +91,7 @@ div.taskTable {
   width: 900px;
 }
 table.taskTable {
-  margin-left:180px; 
+  margin-left: var(--taskInfoWidth);  /* keep in sync with .taskInfo width */
 }
 .taskTable td.timeBubbles, th.hoursHeader {
   min-width: 66px;
@@ -107,7 +112,7 @@ td.taskInfo, th.taskInfo {
   left:0px;
   position:absolute;
   top: auto;
-  width:180px;
+  width: var(--taskInfoWidth); /* keep in sync with taskTable margin-left */
 }
 
 input.taskName {

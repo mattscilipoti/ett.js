@@ -47,8 +47,9 @@
         <tbody>
           <tr v-for="task in tasks">
             <td class="taskInfo">
-              {{ task.index }}
+              {{ task.number }}
               <input class="taskName" type="text" v-model="task.name" />
+              <button v-on:click="removeTask(task.index)">-</button>
             </td>
             <td v-for="hour in hours" class="timeBubbles">
               <input v-for="segment in hour.segments" class="timeBubble" type="radio">

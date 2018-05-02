@@ -18,16 +18,27 @@ Vue.component('task-table', {
   },
   computed: {
     hours: function () {
-      return app.rangeOfIntegers(24).map(
-        n => {
-          return {
-            value: n,
-            military: ('00' + n).slice(-2), // padded left 0
-            datetime: moment(this.startTime).add(n, 'hours'),
-            segments: [0, 0.25, 0.5, 0.75],
-          }
+      return app.rangeOfIntegers(24).map(n => {
+        // These variables are available in the return object
+        let datetime = moment(this.startTime).add(n, 'hours')
+        let durationInMinutes = this.segmentDurationInMinutes
+        return {
+          value: n,
+          military: ('00' + n).slice(-2), // padded left 0
+          durationInMinutes,
+          datetime,
+          segments: app.rangeOfIntegers(4).map((n, index) => {
+            return {
+              index: index,
+              startTime: moment(datetime).add(n * durationInMinutes, "minutes"),
+              durationInMinutes: durationInMinutes,
+            }
+          }),
+          segmentsPerHour: function () {
+            60 / this.segmentDurationInMinutes
+          },
         }
-      )
+      })
     },
     tasks: function () {
       return this.taskNames.map((taskName, n) => {
@@ -37,7 +48,8 @@ Vue.component('task-table', {
           name: taskName,
         }
       })
-    }
+    },
+
   },
   methods: {
     addTask: function () {
@@ -46,6 +58,17 @@ Vue.component('task-table', {
     removeTask: function (index) {
       this.taskNames.splice(index, 1);
     }
+  }
+})
+
+Vue.component('time-bubble', {
+  props: {
+    segment: Object,
+  },
+  template: '<input class="timeBubble" type="radio" v-bind:title="shortTime" >',
+  // template: '<span>{{ segment.startTime }}, {{ segment.durationInMinutes}}</span>',
+  computed: {
+    shortTime: function () { return moment(this.segment.startTime).format('L LT') },
   }
 })
 

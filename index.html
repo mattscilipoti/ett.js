@@ -56,7 +56,11 @@
               <button v-on:click="removeTask(task.index)">-</button>
             </td>
             <td v-for="hour in hours" class="timeBubbles">
-              <input v-for="segment in hour.segments" class="timeBubble" type="radio">
+              <time-bubble
+                v-for="segment in hour.segments" 
+                :key="segment.index"
+                v-bind:segment="segment">
+              </time-bubble>
             </td>
           </tr>
         </tbody>

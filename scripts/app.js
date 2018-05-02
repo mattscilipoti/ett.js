@@ -9,8 +9,14 @@ app.rangeOfIntegers = function (upperBand, lowerBand = 0) {
 
 Vue.component('task-table', {
   template: '#task-table-template',
-  props: ['purpose', 'startTime'],
-
+  props: {
+    purpose: String,
+    segmentDurationInMinutes: {
+      type: Number,
+      default: 15,
+    },
+    startTime: Object, // Moment
+  },
   data: function () {
     return {
       taskNames: ['test1', 'test2', 'test3'],

@@ -1,4 +1,4 @@
-# Emergent Task Timer (ETT)
+# Emergent Task Timer (ETT) (Status: incomplete and abandoned)
 
 This is designed to help record where your time is _actually_ applied.  
 The ETT is a stack of "task tracks" containing 15-minute bubbles of continuous time. Each track represents a distinct activity. 
